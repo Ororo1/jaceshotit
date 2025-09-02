@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photoshoot Website</title>
+    <link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body>
+    <section class="hero">
+        <img src="images/hero.png" alt="Hero Image" class="hero-image">
+        <img src="images/Logo.svg" alt="Logo" class="hero-logo">
+        <div class="hero-buttons">
+            <a href="gallery.html" class="hero-btn" style="text-align:center;display:inline-block;text-decoration:none;">VIEW GALLERY</a>
+            <button class="hero-btn" id="openMagazineCarousel">VIEW MAGAZINES</button>
+        </div>
+        <div class="hero-text-block">
+            <p class="hero-highlights">HIGHLIGHTS</p>
+            <p class="hero-essence">Essence, Skills, Looks.<br>A preview.</p>
+            <p class="hero-featured">Get featured by <span class="hero-featured-number">0903 240 1915</span></p>
+        </div>
+    </section>
+    <footer class="simple-footer">
+        <div class="footer-content">
+            <svg class="instagram-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/>
+            </svg>
+            <span class="instagram-handle">@jace_shot.it</span>
+        </div>
+    </footer>
+</body>
+    <div class="magazine-carousel-overlay" id="magazineCarousel">
+        <img class="magazine-carousel-bg" id="magazineBg" src="" alt="">
+        <button class="magazine-carousel-nav magazine-carousel-prev" id="magazinePrev" aria-label="Previous">&#8592;</button>
+        <img class="magazine-carousel-img" id="magazineImg" src="" alt="Magazine Image">
+        <button class="magazine-carousel-nav magazine-carousel-next" id="magazineNext" aria-label="Next">&#8594;</button>
+        <button class="magazine-carousel-close" id="magazineClose" aria-label="Close">&times;</button>
+    </div>
+    <style>
+        .magazine-carousel-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #000;
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s;
+            overflow: hidden;
+        }
+        .magazine-carousel-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .magazine-carousel-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            filter: blur(32px) brightness(0.7);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .magazine-carousel-img {
+            max-width: 90vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            background: #000;
+            border-radius: 0;
+            box-shadow: none;
+            display: block;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .magazine-carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            color: #fff;
+            background: rgba(0,0,0,0.18);
+            border: none;
+            border-radius: 50%;
+            width: 2.2em;
+            height: 2.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 3100;
+            transition: background 0.2s;
+        }
+        .magazine-carousel-nav:hover { background: rgba(255,140,0,0.25); }
+        .magazine-carousel-prev { left: 2vw; }
+        .magazine-carousel-next { right: 2vw; }
+        .magazine-carousel-close {
+            position: absolute;
+            top: 2vw;
+            right: 2vw;
+            font-size: 2.2rem;
+            color: #fff;
+            background: rgba(0,0,0,0.18);
+            border: none;
+            border-radius: 50%;
+            width: 2em;
+            height: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 3100;
+            transition: background 0.2s;
+        }
+        .magazine-carousel-close:hover { background: rgba(255,0,0,0.25); }
+        @media (max-width: 600px) {
+            .magazine-carousel-img { max-width: 98vw; max-height: 80vh; }
+            .magazine-carousel-prev, .magazine-carousel-next { font-size: 2rem; width: 1.7em; height: 1.7em; }
+            .magazine-carousel-close { font-size: 1.7rem; width: 1.5em; height: 1.5em; }
+        }
+    </style>
+    <script>
+        // Magazine images list (update as needed)
+        const magazineImages = [
+            'images/magazine.png',
+            'images/magazine (1).jpg',
+            'images/magazine (4).jpg',
+            'images/magazine (5).jpg',
+            'images/magazine (5).png',
+            'images/magazine (6).jpg',
+            'images/magazine (6).png',
+            'images/magazine (7).jpg',
+            'images/magazine (7).png'
+        ];
+        const openMagazineCarouselBtn = document.getElementById('openMagazineCarousel');
+        const magazineCarousel = document.getElementById('magazineCarousel');
+        const magazineImg = document.getElementById('magazineImg');
+        const magazineBg = document.getElementById('magazineBg');
+        const magazinePrev = document.getElementById('magazinePrev');
+        const magazineNext = document.getElementById('magazineNext');
+        const magazineClose = document.getElementById('magazineClose');
+        let magazineIndex = 0;
+        function openMagazineCarousel(idx = 0) {
+            magazineCarousel.classList.add('active');
+            showMagazine(idx);
+        }
+        function closeMagazineCarousel() {
+            magazineCarousel.classList.remove('active');
+            magazineImg.src = '';
+            magazineBg.src = '';
+        }
+        function showMagazine(idx) {
+            magazineIndex = (idx + magazineImages.length) % magazineImages.length;
+            const src = magazineImages[magazineIndex];
+            magazineImg.src = src;
+            magazineBg.src = src;
+        }
+        function showPrevMagazine() { showMagazine(magazineIndex - 1); }
+        function showNextMagazine() { showMagazine(magazineIndex + 1); }
+        if (openMagazineCarouselBtn) openMagazineCarouselBtn.onclick = () => openMagazineCarousel(0);
+        if (magazinePrev) magazinePrev.onclick = showPrevMagazine;
+        if (magazineNext) magazineNext.onclick = showNextMagazine;
+        if (magazineClose) magazineClose.onclick = closeMagazineCarousel;
+        if (magazineCarousel) magazineCarousel.onclick = function(e) { if (e.target === magazineCarousel) closeMagazineCarousel(); };
+        document.addEventListener('keydown', function(e) {
+            if (!magazineCarousel.classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') showPrevMagazine();
+            if (e.key === 'ArrowRight') showNextMagazine();
+            if (e.key === 'Escape') closeMagazineCarousel();
+        });
+        // Touch/swipe navigation
+        let startX = null;
+        if (magazineImg) {
+            magazineImg.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; });
+            magazineImg.addEventListener('touchend', function(e) {
+                if (startX === null) return;
+                let endX = e.changedTouches[0].clientX;
+                if (endX - startX > 40) showPrevMagazine();
+                else if (startX - endX > 40) showNextMagazine();
+                startX = null;
+            });
+        }
+    </script>
+</html>

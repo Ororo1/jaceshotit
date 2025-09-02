@@ -1,0 +1,293 @@
+.hero-btn + .hero-btn {
+        background: #fff;
+            color: #7c4a03 !important;
+            background: #fff !important;
+            border: 2.5px solid #fff !important;
+            text-shadow: none !important;
+            -webkit-background-clip: border-box !important;
+            -webkit-text-fill-color: #7c4a03 !important;
+            background-clip: border-box !important;
+        border: 2.5px solid #fff;
+        position: relative;
+        overflow: hidden;
+}
+.hero-btn {
+    /* ...existing code... */
+}
+.hero-btn + .hero-btn {
+    background: #fff;
+    color: #222;
+    border: 2.5px solid #fff;
+}
+.hero-buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    z-index: 4;
+}
+
+.hero-btn {
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 0.9em 2.2em;
+    border: none;
+    border-radius: 2.2em;
+        background: transparent;
+        color: #fff;
+        border: 2.5px solid #fff;
+        letter-spacing: 0.08em;
+        box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.hero-btn:hover, .hero-btn:focus {
+        background: #fff;
+        color: orange;
+        border-color: orange;
+        transform: scale(1.04);
+}
+
+@media (max-width: 768px) {
+    .hero-buttons {
+        top: 54%;
+        gap: 0.7rem;
+    }
+    .hero-btn {
+        font-size: 1rem;
+        padding: 0.7em 1.2em;
+    }
+}
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@font-face {
+    font-family: 'Glacial Indifference';
+    src: url('../../glacial-indifference.regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Glacial Indifference';
+    src: url('../../glacial-indifference.bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+.hero-text-block {
+    position: absolute;
+        left: 3vw;
+        bottom: 8vw;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 80vw;
+}
+
+.hero-highlights {
+    opacity: 0;
+    animation: slideInLeft 0.7s 0.1s forwards;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+    font-weight: 400;
+    color: orange;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 0.2em 0;
+}
+
+.hero-essence {
+    opacity: 0;
+    animation: slideInLeft 0.7s 0.4s forwards;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+    font-weight: 800;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.2em 0;
+    line-height: 1.1;
+}
+
+.hero-featured {
+    opacity: 0;
+    animation: slideInLeft 0.7s 0.7s forwards;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+    font-weight: 400;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin: 0;
+}
+
+.hero-featured-number {
+    color: orange;
+    font-weight: 800;
+}
+
+@media (max-width: 768px) {
+        .hero-text-block {
+            left: 4vw;
+            bottom: 28vw;
+            max-width: 92vw;
+        }
+    .hero-highlights {
+        font-size: 1.2rem;
+    }
+    .hero-essence {
+        font-size: 1.5rem;
+    }
+    .hero-featured {
+        font-size: 0.9rem;
+    }
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: system-ui, Arial, sans-serif;
+    background: #000;
+}
+
+.hero {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-image {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+    background: #000;
+    border-radius: 4rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-logo {
+    position: absolute;
+    top: 4vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36vw;
+    max-width: 200px;
+    min-width: 100px;
+    aspect-ratio: 1/1;
+    height: auto;
+    z-index: 3;
+    background: rgba(0,0,0,0.05);
+    border-radius: 50%;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
+    padding: 0.3em;
+    object-fit: cover;
+}
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+    pointer-events: none;
+}
+
+ 
+.simple-footer {
+    width: 100vw;
+    text-align: center;
+    padding: 1.2rem 0 0.7rem 0;
+    font-size: 1.1rem;
+    color: #fff;
+    background: transparent;
+    letter-spacing: 0.1em;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.instagram-icon {
+    width: 24px;
+    height: 24px;
+    color: #8B4513;
+}
+
+.instagram-handle {
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+    font-weight: 400;
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+}
+
+@media (max-width: 768px) {
+    .hero-logo {
+        top: 6vw;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 52vw;
+        max-width: 150px;
+        min-width: 75px;
+        aspect-ratio: 1/1;
+        padding: 0.2em;
+    }
+    .hero {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    .hero-image {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        border-radius: 2.5rem;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+    .simple-footer {
+        font-size: 1rem;
+        padding: 1rem 0 0.5rem 0;
+    }
+}
